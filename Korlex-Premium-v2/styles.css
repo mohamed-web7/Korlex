@@ -428,7 +428,7 @@ input, textarea, button { font: inherit; }
     font-size: clamp(40px, 5.6vw, 92px);
     line-height: 1.04;
     letter-spacing: -0.028em;
-    max-width: 720px;
+    max-width: 880px;
     margin-bottom: 28px;
     color: #F8FAFC;
     text-shadow: 0 1px 0 rgba(0,0,0,.25);
@@ -447,7 +447,7 @@ input, textarea, button { font: inherit; }
     font-size: clamp(17px, 1.25vw, 19px);
     line-height: 1.55;
     color: rgba(255,255,255,.82);
-    max-width: 540px;
+    max-width: 680px;
     margin-bottom: 44px;
     font-weight: 400;
 }
@@ -460,28 +460,33 @@ input, textarea, button { font: inherit; }
 }
 
 .hero-trust {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px 14px;
+    justify-content: center;
+    gap: 8px 12px;
     margin-top: 36px;
-    padding-top: 22px;
-    max-width: 600px;
-    border-top: 1px solid rgba(255,255,255,.10);
-    opacity: .9;
+    padding: 10px 16px;
+    max-width: max-content;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 999px;
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
 }
 .ht-item {
-    font-size: 12.5px;
+    font-size: 11px;
     letter-spacing: .10em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.65);
+    color: rgba(255,255,255,.62);
     font-weight: 500;
 }
 .ht-dot {
-    width: 4px; height: 4px;
+    width: 3px; height: 3px;
     border-radius: 50%;
     background: var(--blue);
-    opacity: .6;
+    opacity: .7;
 }
 
 /* ---------- 07. PAIN ---------- */
@@ -2124,14 +2129,14 @@ input, textarea, button { font: inherit; }
     .hero-content { padding-top: 20px; padding-bottom: 70px; }
     .hero-meta { margin-bottom: 22px; padding: 7px 12px 7px 9px; }
     .meta-label { font-size: 11px; }
-    .hero-title { max-width: 380px; font-size: clamp(36px, 10vw, 46px); line-height: 1.05; margin-bottom: 22px; }
-    .hero-sub { max-width: 380px; font-size: 15.5px; line-height: 1.55; margin-bottom: 32px; }
+    .hero-title { max-width: 440px; font-size: clamp(36px, 10vw, 46px); line-height: 1.05; margin-bottom: 22px; }
+    .hero-sub { max-width: 420px; font-size: 15.5px; line-height: 1.55; margin-bottom: 32px; }
     .hero-ctas { gap: 12px; flex-direction: column; align-items: center; justify-content: center; }
     .hero-ctas .btn { align-self: center; margin-left: auto; margin-right: auto; max-width: 320px; width: 100%; min-height: 54px; }
     .btn { padding: 14px 22px; font-size: 15px; }
     .btn-lg { padding: 16px 24px; font-size: 15.5px; }
-    .hero-trust { gap: 8px 10px; max-width: 380px; margin-top: 32px; padding-top: 18px; }
-    .ht-item { font-size: 10.5px; letter-spacing: .08em; }
+    .hero-trust { gap: 6px 10px; max-width: 100%; margin-top: 32px; padding: 8px 14px; }
+    .ht-item { font-size: 10px; letter-spacing: .08em; }
 
     /* === Pain === */
     .pain { padding: clamp(80px, 14vw, 120px) 0; }
@@ -2424,7 +2429,8 @@ input, textarea, button { font: inherit; }
 }
 
 @media (max-width: 380px) {
-    .hero-title { font-size: 38px; }
+    .hero-title { font-size: 38px; max-width: 320px; }
+    .hero-sub { max-width: 300px; font-size: 15px; }
     .display-2 { font-size: 32px; }
     .math-money { font-size: 92px; }
     .math-plus { font-size: 48px; }
