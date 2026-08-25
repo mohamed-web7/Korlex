@@ -77,9 +77,10 @@
         });
     }
 
-    /* ----- VIP form (no backend — graceful demo success) ----- */
+    /* ----- VIP form — sends to WhatsApp +213776819127 ----- */
     const form = document.getElementById('vipForm');
     const success = document.getElementById('formSuccess');
+    const WA_NUMBER = '213776819127'; // E.164 without '+'
     if (form && success) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -99,6 +100,20 @@
                 });
                 return;
             }
+
+            const n = name.value.trim();
+            const s = service.value.trim();
+            const d = desc.value.trim();
+
+            const message =
+                'New VIP project request — Korlex.co\n\n' +
+                'Name: ' + n + '\n' +
+                'Service: ' + s + '\n\n' +
+                'Project description:\n' + d + '\n\n' +
+                '— Sent from the landing page';
+
+            const waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message);
+            window.open(waUrl, '_blank', 'noopener');
 
             success.hidden = false;
             form.reset();
