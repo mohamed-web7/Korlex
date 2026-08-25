@@ -241,10 +241,17 @@ input, textarea, button { font: inherit; }
     letter-spacing: -0.01em;
 }
 .brand-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
 }
 .brand-name { color: #fff; }
 .brand-tld { color: var(--blue); }
@@ -2011,6 +2018,19 @@ input, textarea, button { font: inherit; }
     align-items: center;
 }
 .footer-brand .brand-name { display: block; font-size: 20px; margin-bottom: 8px; }
+.footer-brand-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+.footer-logo {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
 .footer-brand p { max-width: 36ch; }
 .footer-nav {
     display: flex;
@@ -2078,6 +2098,170 @@ input, textarea, button { font: inherit; }
 }
 
 /* ---------- 22. RESPONSIVE ---------- */
+
+/* === Laptop range (721px – 1100px) — keep side-by-side, fix proportions === */
+@media (min-width: 721px) and (max-width: 1100px) {
+    /* Hero — fit the viewport without dominating */
+    .hero {
+        min-height: 0;
+        height: auto;
+        padding-top: 76px;
+        padding-bottom: clamp(48px, 6vw, 80px);
+    }
+    .hero-content {
+        height: auto;
+        padding-top: clamp(32px, 6vh, 56px);
+        padding-bottom: clamp(32px, 5vh, 64px);
+    }
+    .hero-image {
+        object-position: 70% center;
+        opacity: .55;
+    }
+    .hero-overlay {
+        background:
+            linear-gradient(90deg,
+                rgba(5,10,18,.96) 0%,
+                rgba(5,10,18,.78) 38%,
+                rgba(5,10,18,.45) 70%,
+                rgba(5,10,18,.18) 100%),
+            linear-gradient(180deg,
+                rgba(5,10,18,.55) 0%,
+                transparent 35%,
+                rgba(5,10,18,.65) 100%);
+    }
+    .hero-meta { margin-bottom: 22px; }
+    .hero-title {
+        max-width: 780px;
+        font-size: clamp(36px, 5vw, 64px);
+        margin-bottom: 22px;
+    }
+    .hero-sub {
+        max-width: 640px;
+        font-size: 16.5px;
+        margin-bottom: 32px;
+    }
+    .hero-ctas {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .hero-ctas .btn {
+        flex: 0 1 auto;
+        max-width: 320px;
+    }
+    .hero-trust {
+        margin-top: 28px;
+        padding: 8px 14px;
+    }
+    .ht-item { font-size: 10.5px; }
+
+    /* Headlines — let them breathe on a laptop */
+    .display-2 { font-size: clamp(30px, 4vw, 52px); }
+    .kicker { margin-bottom: 20px; }
+    .center { max-width: 720px; }
+    .center .display-2 { max-width: 720px; }
+
+    /* Section padding — slightly tighter */
+    .pain, .math, .speed, .paradigm, .tech, .services, .method, .work, .founder, .vip, .faq {
+        padding: clamp(80px, 10vw, 140px) 0;
+    }
+
+    /* Pain — image shouldn't dominate */
+    .pain-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(32px, 4vw, 56px);
+    }
+    .pain-image {
+        aspect-ratio: 4 / 3;
+        max-width: 100%;
+    }
+
+    /* Speed — keep FAST/SLOW side-by-side, kill the dedicated VS column */
+    .speed-compare {
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(24px, 3vw, 40px);
+        align-items: stretch;
+        position: relative;
+    }
+    .speed-vs {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -90%);
+        background: rgba(255,255,255,.85);
+        color: var(--navy);
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+        box-shadow: 0 6px 18px -6px rgba(10,15,28,.3);
+        padding-top: 0;
+        z-index: 2;
+    }
+    .speed-side { gap: 20px; }
+    .speed-device { max-width: 300px; padding: 22px; }
+    .device-frame { max-width: 240px; padding: 14px; }
+    .speed-time { font-size: clamp(56px, 7vw, 96px); }
+
+    /* Math — keep grid but make cells smaller */
+    .math-money { font-size: clamp(80px, 12vw, 150px); }
+    .math-plus { font-size: clamp(48px, 7vw, 80px); }
+    .math-grid { margin: 32px 0; }
+    .math-cell { padding: 24px 20px; }
+    .math-num { font-size: clamp(40px, 5vw, 60px); }
+    .math-benchmark { padding: 24px; gap: 24px; }
+
+    /* Paradigm — slightly smaller stage */
+    .paradigm-stage { aspect-ratio: 16 / 9; }
+    .anno { font-size: 10px; padding: 5px 9px; }
+
+    /* Tech — keep principles grid tight */
+    .tech-principles { gap: 16px; }
+    .principle { padding: 24px; }
+    .principle-feature { padding: 36px; gap: 18px; }
+
+    /* Services — feature card stacks beside small ones on tablet? keep side-by-side */
+    .services-grid { grid-template-columns: 1.2fr 1fr; gap: 18px; }
+    .svc-feature { padding: 28px; gap: 24px; }
+    .svc-mock { aspect-ratio: 16 / 10; }
+
+    /* Method — still 4 steps but tighter */
+    .timeline { gap: 0; }
+    .step { padding: 0 12px; }
+    .step-num { width: 48px; height: 48px; font-size: 22px; margin-bottom: 18px; }
+    .step-body h3 { font-size: 18px; }
+    .step-body p { font-size: 13.5px; }
+
+    /* Work — image + meta still side-by-side, narrower image */
+    .work-stage { grid-template-columns: 1.3fr 1fr; gap: 24px; }
+    .work-meta { padding: 24px; }
+
+    /* Founder — keep two columns but image less tall */
+    .founder-grid { grid-template-columns: 1fr 1.1fr; gap: 40px; }
+    .founder-image { aspect-ratio: 4 / 4.5; }
+
+    /* VIP — intro + form still side-by-side */
+    .vip-grid { grid-template-columns: 1fr 1.05fr; gap: 40px; }
+    .vip-form { padding: 32px; }
+
+    /* Audit */
+    .audit-inner { grid-template-columns: 1.4fr auto; gap: 32px; }
+    .audit-copy .display-2 { font-size: clamp(28px, 3.4vw, 44px); }
+
+    /* Footer — keep brand + nav + meta row */
+    .footer-inner {
+        grid-template-columns: 1.4fr 1fr auto;
+        gap: 32px;
+        text-align: left;
+    }
+    .footer-brand p { margin-left: 0; margin-right: 0; }
+    .footer-nav { justify-content: flex-start; }
+}
+
+/* === Tablet & below (≤ 1100px) — collapse to single column when needed === */
 @media (max-width: 1100px) {
     .nav-desktop { display: none; }
     .header-actions { display: none; }
@@ -2104,12 +2288,22 @@ input, textarea, button { font: inherit; }
     .math-grid { grid-template-columns: 1fr; }
     .math-benchmark { grid-template-columns: 1fr; gap: 18px; padding: 24px; }
     .speed-compare { grid-template-columns: 1fr; }
-    .speed-vs { padding-top: 0; font-size: 18px; }
+    .speed-vs {
+        position: static;
+        transform: none;
+        width: auto; height: auto;
+        background: transparent;
+        color: var(--slate-2);
+        box-shadow: none;
+        padding: 8px 0;
+    }
     .speed-result { flex-direction: column; align-items: center; text-align: center; }
     .audit-inner { grid-template-columns: 1fr; align-items: flex-start; }
-    .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center; }
     .footer-meta { order: 3; }
     .pain-grid { grid-template-columns: 1fr; }
+    .footer-brand p { margin-left: auto; margin-right: auto; }
+    .footer-nav { justify-content: center; }
 }
 
 @media (max-width: 720px) {
@@ -2331,7 +2525,7 @@ input, textarea, button { font: inherit; }
     .header-inner { height: 64px; }
     .hero { padding-top: 64px; }
     .brand-name { font-size: 16px; }
-    .brand-mark svg { width: 20px; height: 20px; }
+    .brand-mark { width: 32px; height: 32px; }
 
     /* === Bottom nav === */
     .header-link { display: none; }
